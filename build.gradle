@@ -1,0 +1,103 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+}
+
+// Define versions in a single place
+ext {
+    // Sdk and tools
+
+    gsonVersion = '2.8.2'
+    calligraphyVersion = '2.2.0'
+    glideVersion = '3.7.0'
+
+    rxjava2Version = '2.1.9'
+    rxandroidVersion = '2.0.2'
+    timberVersion = '4.5.1'
+    lifecycle = '1.1.0'
+    multiDexVersion = '1.0.3'
+    supportLibraryVersion = '27.1.0'
+    rx2FastAndroidNetworking = '1.0.1'
+    daggerVer = '2.17'
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    // font
+    implementation "uk.co.chrisjenx:calligraphy:$calligraphyVersion"
+
+    // image
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    // parser
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+
+    // logger
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+    // view model
+    implementation "android.arch.lifecycle:extensions:$lifecycle"
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle"
+
+    //MultiDex
+    implementation "com.android.support:multidex:$multiDexVersion"
+
+    implementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$supportLibraryVersion"
+
+
+    //network call
+    implementation "com.amitshekhar.android:rx2-android-networking:$rx2FastAndroidNetworking"
+
+   /* // dependency injection
+    // Dagger
+    implementation "com.google.dagger:dagger:$daggerVer"
+
+    kapt "com.google.dagger:dagger-compiler:$daggerVer"
+    implementation "com.google.dagger:dagger-android:$daggerVer"
+    implementation "com.google.dagger:dagger-android-support:$daggerVer"
+    // If you use the support libraries
+    kapt "com.google.dagger:dagger-android-processor:$daggerVer"*/
+
+}
